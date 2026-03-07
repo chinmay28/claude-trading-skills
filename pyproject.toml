@@ -71,6 +71,7 @@ testpaths = [
     "skills/edge-signal-aggregator/scripts/tests",
     "skills/skill-idea-miner/scripts/tests",
     "skills/skill-designer/scripts/tests",
+    "skills/trade-hypothesis-ideator/scripts/tests",
 ]
 
 [tool.bandit]

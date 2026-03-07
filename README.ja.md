@@ -152,6 +152,13 @@ English README is available at [`README.md`](README.md).
   - パイプラインスキーマに対する事前検証と`uv run`サブプロセスフォールバックによるクロス環境互換性を提供。
   - APIキー不要 — ローカルYAMLファイルで動作し、ローカルパイプラインリポジトリに対して検証。
 
+- **トレード仮説アイデエータ** (`trade-hypothesis-ideator`)
+  - 戦略コンテキスト・市場コンテキスト・トレードログ・ジャーナル証拠から、反証可能な仮説カードを1-5件生成。
+  - 2パス構成: Pass 1で`evidence_summary.json`を生成、Pass 2で生仮説を検証してランキングし、JSON + Markdownレポートを出力。
+  - ガードレールで必須フィールド欠落、禁止フレーズ、重複仮説、制約違反を検出。
+  - `pursue`判定の仮説を`edge-finder-candidate/v1`互換の`strategy.yaml` + `metadata.json`へエクスポート可能（`pivot_breakout` / `gap_up_continuation`のみ）。
+  - APIキー不要 — ローカルJSON/YAMLのみで実行可能。
+
 - **戦略ピボットデザイナー** (`strategy-pivot-designer`)
   - バックテスト反復ループの停滞を検知し、パラメータ調整が局所最適に陥った際に構造的に異なる戦略ピボット案を生成。
   - 4つの決定論的トリガー: 改善停滞、過学習プロキシ、コスト敗北、テールリスク — `evaluate_backtest.py`出力からマッピング。
@@ -471,6 +478,7 @@ launchctl start com.trade-analysis.skill-generation-daily
 - **FinVizスクリーナー**: APIキー不要（パブリックFinVizスクリーナー）。FINVIZ Eliteは`$FINVIZ_API_KEY`環境変数から自動検出（オプション）
 - **かんち式配当3スキル**（`kanchi-dividend-sop` / `kanchi-dividend-review-monitor` / `kanchi-dividend-us-tax-accounting`）: APIキー不要（上流データは他スキル出力または手動入力を利用）
 - **エッジ候補エージェント** (`edge-candidate-agent`): APIキー不要（ローカルYAML生成、ローカルパイプラインリポジトリに対して検証）
+- **トレード仮説アイデエータ** (`trade-hypothesis-ideator`): APIキー不要（ローカルJSON仮説パイプライン、任意で戦略エクスポート）
 - **エッジ戦略レビュアー** (`edge-strategy-reviewer`): APIキー不要（ローカルYAMLドラフトの決定論的スコアリング）
 - **エッジパイプラインオーケストレータ** (`edge-pipeline-orchestrator`): APIキー不要（ローカルエッジスキルをsubprocess経由でオーケストレーション）
 - **エッジシグナルアグリゲータ** (`edge-signal-aggregator`): APIキー不要（ローカルJSON/YAML出力を統合し重み付けランキングを生成）

@@ -174,6 +174,13 @@ Curated Claude skills for equity investors and traders. Each skill bundles promp
   - Guardrails enforce schema bounds (risk limits, exit rules, non-empty conditions) and deterministic metadata with interface versioning.
   - No API key required — operates on local YAML files and validates against local pipeline repository.
 
+- **Trade Hypothesis Ideator** (`trade-hypothesis-ideator`)
+  - Generates 1-5 falsifiable hypothesis cards from structured strategy context, market context, trade logs, and journal evidence.
+  - Two-pass workflow: Pass 1 builds `evidence_summary.json`; Pass 2 validates raw hypotheses, ranks cards, and emits JSON + markdown reports.
+  - Guardrails enforce field completeness, banned phrase detection, duplicate detection, and constraint-violation checks.
+  - Exports `pursue` hypotheses to `strategy.yaml` + `metadata.json` compatible with `edge-finder-candidate/v1` (`pivot_breakout`, `gap_up_continuation` only).
+  - No API key required — runs entirely on local JSON/YAML artifacts.
+
 - **Strategy Pivot Designer** (`strategy-pivot-designer`)
   - Detects backtest iteration stagnation and generates structurally different strategy pivot proposals when parameter tuning reaches a local optimum.
   - Four deterministic triggers: improvement plateau, overfitting proxy, cost defeat, and tail risk — mapped from `evaluate_backtest.py` output.
@@ -550,6 +557,7 @@ Several skills require API keys for data access:
 | **Theme Detector** | 🟡 Optional | 🟡 Optional | ❌ Not used | Core: FINVIZ public + yfinance (free). FMP for ETF holdings, FINVIZ Elite for stock lists |
 | **FinViz Screener** | ❌ Not used | 🟡 Optional | ❌ Not used | Public screener free; FINVIZ Elite auto-detected from `$FINVIZ_API_KEY` |
 | **Edge Candidate Agent** | ❌ Not used | ❌ Not used | ❌ Not used | Local YAML generation; validates against local pipeline repo |
+| **Trade Hypothesis Ideator** | ❌ Not used | ❌ Not used | ❌ Not used | Local JSON hypothesis pipeline with optional strategy export |
 | **Edge Strategy Reviewer** | ❌ Not used | ❌ Not used | ❌ Not used | Deterministic scoring on local YAML drafts |
 | **Edge Pipeline Orchestrator** | ❌ Not used | ❌ Not used | ❌ Not used | Orchestrates local edge skills via subprocess |
 | **Edge Signal Aggregator** | ❌ Not used | ❌ Not used | ❌ Not used | Aggregates local edge-skill JSON/YAML outputs into weighted ranked signals |

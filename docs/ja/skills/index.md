@@ -36,6 +36,7 @@ permalink: /ja/skills/
 | [Edge Concept Synthesizer]({{ '/ja/skills/edge-concept-synthesizer/' | relative_url }}) | Abstract detector tickets and hints into reusable edge concepts with thesis, invalidation signals, and strategy playb... | <span class="badge badge-free">API不要</span> |
 | [Edge Hint Extractor]({{ '/ja/skills/edge-hint-extractor/' | relative_url }}) | Extract edge hints from daily market observations and news reactions, with optional LLM ideation, and output canonica... | <span class="badge badge-free">API不要</span> |
 | [Edge Pipeline Orchestrator]({{ '/ja/skills/edge-pipeline-orchestrator/' | relative_url }}) | Orchestrate the full edge research pipeline from candidate detection through strategy design, review, revision, and e... | <span class="badge badge-free">API不要</span> |
+| [Edge Signal Aggregator]({{ '/ja/skills/edge-signal-aggregator/' | relative_url }}) | Aggregate and rank signals from multiple edge-finding skills (edge-candidate-agent, theme-detector, sector-analyst, i... | <span class="badge badge-free">API不要</span> |
 | [Edge Strategy Designer]({{ '/ja/skills/edge-strategy-designer/' | relative_url }}) | Convert abstract edge concepts into strategy draft variants and optional exportable ticket YAMLs for edge-candidate-a... | <span class="badge badge-free">API不要</span> |
 | [Edge Strategy Reviewer]({{ '/ja/skills/edge-strategy-reviewer/' | relative_url }}) | Critically review strategy drafts from edge-strategy-designer for edge plausibility, overfitting risk, sample size ad... | <span class="badge badge-free">API不要</span> |
 | [Finviz Screener]({{ '/ja/skills/finviz-screener/' | relative_url }}) ★ | Build and open FinViz screener URLs from natural language requests | <span class="badge badge-free">API不要</span> <span class="badge badge-optional">FINVIZ任意</span> |
@@ -55,6 +56,23 @@ permalink: /ja/skills/
 | [Portfolio Manager]({{ '/ja/skills/portfolio-manager/' | relative_url }}) | Comprehensive portfolio analysis using Alpaca MCP Server integration to fetch holdings and positions, then analyze as... | <span class="badge badge-api">Alpaca必須</span> |
 | [Position Sizer]({{ '/ja/skills/position-sizer/' | relative_url }}) ★ | Calculate risk-based position sizes for long stock trades | <span class="badge badge-free">API不要</span> |
 | [Scenario Analyzer]({{ '/ja/skills/scenario-analyzer/' | relative_url }}) | ニュースヘッドラインを入力として18ヶ月シナリオを分析するスキル。
+scenario-analystエージェントで主分析を実行し、
+strategy-reviewerエージェントでセカンドオピニオンを取得。
+1次・2次・3次影響、推奨... | <span class="badge badge-free">API不要</span> |
+| [Sector Analyst]({{ '/ja/skills/sector-analyst/' | relative_url }}) | This skill should be used when analyzing sector rotation patterns and market cycle positioning | <span class="badge badge-free">API不要</span> |
+| [Skill Designer]({{ '/ja/skills/skill-designer/' | relative_url }}) | Design new Claude skills from structured idea specifications | <span class="badge badge-free">API不要</span> |
+| [Skill Idea Miner]({{ '/ja/skills/skill-idea-miner/' | relative_url }}) | Mine Claude Code session logs for skill idea candidates | <span class="badge badge-free">API不要</span> |
+| [Skill Integration Tester]({{ '/ja/skills/skill-integration-tester/' | relative_url }}) | Validate multi-skill workflows defined in CLAUDE | <span class="badge badge-free">API不要</span> |
+| [Stanley Druckenmiller Investment]({{ '/ja/skills/stanley-druckenmiller-investment/' | relative_url }}) | Druckenmiller Strategy Synthesizer - Integrates 8 upstream skill outputs (Market Breadth, Uptrend Analysis, Market To... | <span class="badge badge-free">API不要</span> |
+| [Strategy Pivot Designer]({{ '/ja/skills/strategy-pivot-designer/' | relative_url }}) | Detect backtest iteration stagnation and generate structurally different strategy pivot proposals when parameter tuni... | <span class="badge badge-free">API不要</span> |
+| [Technical Analyst]({{ '/ja/skills/technical-analyst/' | relative_url }}) | This skill should be used when analyzing weekly price charts for stocks, stock indices, cryptocurrencies, or forex pairs | <span class="badge badge-free">API不要</span> |
+| [Theme Detector]({{ '/ja/skills/theme-detector/' | relative_url }}) ★ | Detect and analyze trending market themes across sectors | <span class="badge badge-free">API不要</span> <span class="badge badge-optional">FMP任意</span> <span class="badge badge-optional">FINVIZ任意</span> |
+| [Trade Hypothesis Ideator]({{ '/ja/skills/trade-hypothesis-ideator/' | relative_url }}) | Generate falsifiable trade strategy hypotheses from market data, trade logs, and journal snippets | <span class="badge badge-free">API不要</span> |
+| [Uptrend Analyzer]({{ '/ja/skills/uptrend-analyzer/' | relative_url }}) | Analyzes market breadth using Monty's Uptrend Ratio Dashboard data to diagnose the current market environment | <span class="badge badge-free">API不要</span> |
+| [US Market Bubble Detector]({{ '/ja/skills/us-market-bubble-detector/' | relative_url }}) ★ | Evaluates market bubble risk through quantitative data-driven analysis using the revised Minsky/Kindleberger framewor... | <span class="badge badge-free">API不要</span> |
+| [US Stock Analysis]({{ '/ja/skills/us-stock-analysis/' | relative_url }}) ★ | Comprehensive US stock analysis including fundamental analysis (financial metrics, business quality, valuation), tech... | <span class="badge badge-free">API不要</span> |
+| [Value Dividend Screener]({{ '/ja/skills/value-dividend-screener/' | relative_url }}) | Screen US stocks for high-quality dividend opportunities combining value characteristics (P/E ratio under 20, P/B rat... | <span class="badge badge-api">FMP必須</span> <span class="badge badge-optional">FINVIZ任意</span> |
+| [VCP Screener]({{ '/ja/skills/vcp-screener/' | relative_url }}) ★ | Screen S&P 500 stocks for Mark Minervini's Volatility Contraction Pattern (VCP) | <span class="badge badge-free">API不要</span> |
 scenario-analystエージェントで主分析を実行し、
 strategy-reviewerエージェントでセカンドオピニオンを取得。
 1次・2次・3次影響、推奨... | <span class="badge badge-free">API不要</span> |
