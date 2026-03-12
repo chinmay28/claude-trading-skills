@@ -33,6 +33,18 @@ Unlike the Bubble Detector (macro/multi-month evaluation), this skill focuses on
 - エクスポージャー縮小のタイミング判断
 - 今後2〜8週間の調整確率を評価したい
 
+## Prerequisites
+
+**Required:**
+- **FMP API Key:** Set `$FMP_API_KEY` environment variable or pass `--api-key`. Free tier sufficient (~33 API calls per execution).
+- **WebSearch Access:** Required to collect S&P 500 breadth (50DMA %) and CBOE Put/Call ratio data.
+
+**Optional:**
+- **Margin Debt Data:** Enhances sentiment scoring but typically 1-2 months lagged.
+- **VIX Term Structure:** Auto-detected from FMP API if VIX3M quote available; manual override via `--vix-term`.
+
+**Data Freshness:** All manually collected data should be from the most recent 3 business days for accurate analysis.
+
 ## Difference from Bubble Detector
 
 | Aspect | Market Top Detector | Bubble Detector |
