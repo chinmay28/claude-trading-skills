@@ -21,6 +21,36 @@ This skill provides comprehensive options strategy analysis and education using 
 - User Input: Implied volatility (IV), risk-free rate
 - Theoretical Models: Black-Scholes for pricing and Greeks
 
+## Prerequisites
+
+**Required:**
+- Python 3.8+ with `numpy`, `scipy`, `requests`
+
+**Optional:**
+- FMP API key (for real-time stock prices and historical volatility)
+  - Set via `FMP_API_KEY` environment variable or `--api-key` argument
+  - Without API key: Use manual inputs for stock price and volatility
+
+**Installation:**
+```bash
+pip install numpy scipy requests
+```
+
+**Quick Start Examples:**
+```bash
+# Basic call option pricing (no API key needed)
+python3 scripts/black_scholes.py
+
+# With FMP API key for real-time data
+python3 scripts/black_scholes.py --ticker AAPL --api-key $FMP_API_KEY
+
+# Custom option parameters
+python3 scripts/black_scholes.py --stock-price 180 --strike 185 --days 30 --volatility 0.25
+
+# Put option analysis
+python3 scripts/black_scholes.py --stock-price 180 --strike 175 --days 30 --option-type put
+```
+
 ## When to Use This Skill
 
 Use this skill when:
@@ -937,9 +967,10 @@ Workflow:
 ## Resources
 
 **References:**
-- `references/strategies_guide.md` - All 17+ strategies explained
-- `references/greeks_explained.md` - Greeks deep dive
-- `references/volatility_guide.md` - HV vs IV, when to trade
+- `references/black_scholes_methodology.md` - Black-Scholes formulas, Greeks, and interpretation
+- `references/strategies_guide.md` - All 17+ strategies explained (future)
+- `references/greeks_explained.md` - Greeks deep dive (future)
+- `references/volatility_guide.md` - HV vs IV, when to trade (future)
 
 **Scripts:**
 - `scripts/black_scholes.py` - Pricing engine and Greeks
