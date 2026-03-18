@@ -276,8 +276,8 @@ Theme Heatスコア85と45の違いは？投資判断にどう使う？
 
 | テーマ | Heat | Direction | Lifecycle | Confidence |
 |--------|------|-----------|-----------|------------|
-| AI & Semiconductors | 85 | Bullish | Trending | High |
-| Gold & Precious Metals | 72 | Bullish | Mid | Medium |
+| AI & Semiconductors | 85 | Bullish | Trending | Medium |
+| Gold & Precious Metals | 72 | Bullish | Accelerating | Medium |
 | Clean Energy & EV | 35 | Bearish | Exhausting | Medium |
 
 ### フィールドの読み方

@@ -205,7 +205,7 @@ The Heat score combines four sub-components:
 What market themes are trending right now?
 ```
 
-Suppose Theme Detector identifies "AI & Semiconductors" as the top bullish theme (Heat: 85, Lifecycle: Mid, Confidence: High).
+Suppose Theme Detector identifies "AI & Semiconductors" as the top bullish theme (Heat: 85, Lifecycle: Accelerating, Confidence: Medium).
 
 **Step 2 -- Research individual stocks:**
 ```
@@ -260,7 +260,7 @@ The detector generates:
 ## 7. Tips & Best Practices
 
 - **Run weekly for strategic allocation.** Theme trends shift on a weekly-to-monthly timeframe. Daily scans add noise without changing conclusions.
-- **Combine Heat with Lifecycle for decision-making.** Heat alone can be misleading -- a theme with Heat 90 and Exhaustion lifecycle may be about to reverse.
+- **Combine Heat with Lifecycle for decision-making.** Heat alone can be misleading -- a theme with Heat 90 and Exhausting lifecycle may be about to reverse.
 - **Use proxy ETFs for quick exposure.** Each theme includes proxy ETFs (e.g., SMH/SOXX for AI & Semiconductors, XBI/IBB for Biotech). These provide immediate, diversified theme exposure.
 - **Watch ETF proliferation as a contrarian signal.** When many new thematic ETFs launch, it typically indicates late-cycle retail participation. The more ETFs tracking a theme, the closer it may be to exhaustion.
 - **Cross-reference with narrative.** Quantitative High + Narrative Weak is a divergence signal (momentum without conviction). Quantitative Low + Narrative Strong may indicate an emerging theme where price action has not yet caught up.
@@ -276,7 +276,7 @@ The detector generates:
 | **Theme + CANSLIM** | Identify strong themes, then run CANSLIM Screener with a custom `--universe` of stocks from that theme to find the best growth candidates |
 | **Macro alignment** | Run Theme Detector alongside Market Environment Analysis and Sector Analyst to verify that theme strength aligns with broader macro conditions |
 | **Bearish theme hedging** | When bearish themes are detected, use Options Strategy Advisor to evaluate protective strategies (puts, put spreads) on exposed holdings |
-| **Lifecycle monitoring** | Track theme lifecycle stage monthly. When a previously Early theme moves to Late, consider reducing exposure and rotating into newer themes |
+| **Lifecycle monitoring** | Track theme lifecycle stage monthly. When a previously Emerging theme moves to Mature, consider reducing exposure and rotating into newer themes |
 | **Scenario analysis** | Use Scenario Analyzer to project how current news headlines may affect specific themes, then cross-check with Theme Detector's quantitative scoring |
 
 ---

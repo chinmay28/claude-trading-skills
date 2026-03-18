@@ -129,10 +129,10 @@ How long the theme has been active (consecutive weeks of elevated heat).
 
 | Duration | Stage Signal |
 |----------|-------------|
-| 1-3 weeks | Early |
-| 4-8 weeks | Mid |
-| 9-16 weeks | Late |
-| > 16 weeks | Exhaustion |
+| 1-3 weeks | Emerging |
+| 4-8 weeks | Accelerating |
+| 9-16 weeks | Mature |
+| > 16 weeks | Exhausting |
 
 **Limitation:** Duration tracking requires historical data. On first run, duration defaults to "Unknown" and lifecycle uses other factors only.
 
@@ -147,10 +147,10 @@ extremity_pct = count(within_5pct_of_52wk_high_or_low) / count(total_stocks)
 
 | Extremity % | Stage Signal |
 |-------------|-------------|
-| < 20%       | Early |
-| 20-40%      | Mid |
-| 40-60%      | Late |
-| > 60%       | Exhaustion |
+| < 20%       | Emerging |
+| 20-40%      | Accelerating |
+| 40-60%      | Mature |
+| > 60%       | Exhausting |
 
 **Data Source:** FINVIZ 52-week high/low data
 
@@ -176,10 +176,10 @@ relative_pe = avg_theme_pe / sp500_pe
 
 | Relative P/E | Stage Signal |
 |---------------|-------------|
-| < 0.8         | Early (undervalued) |
-| 0.8-1.2       | Mid (fair value) |
-| 1.2-2.0       | Late (overvalued) |
-| > 2.0         | Exhaustion (extreme) |
+| < 0.8         | Emerging (undervalued) |
+| 0.8-1.2       | Accelerating (fair value) |
+| 1.2-2.0       | Mature (overvalued) |
+| > 2.0         | Exhausting (extreme) |
 
 **Data Source:** FMP API for P/E ratios (optional; uses FINVIZ forward P/E as fallback)
 
@@ -191,12 +191,12 @@ Number of thematic ETFs tracking the theme. More ETFs indicate greater retail/in
 
 | ETF Count | Score | Stage Signal |
 |-----------|-------|-------------|
-| 0         | 0     | Very Early |
-| 1         | 20    | Early |
-| 2-3       | 40    | Mid |
-| 4-6       | 60    | Mid-Late |
-| 7-10      | 80    | Late |
-| > 10      | 100   | Exhaustion |
+| 0         | 0     | Emerging |
+| 1         | 20    | Emerging |
+| 2-3       | 40    | Accelerating |
+| 4-6       | 60    | Trending |
+| 7-10      | 80    | Mature |
+| > 10      | 100   | Exhausting |
 
 ### Lifecycle Maturity Composite
 
@@ -371,7 +371,7 @@ This provides more accurate uptrend ratios than simple price-above-SMA200 proxy.
         "breadth": 70
       },
       "lifecycle": {
-        "stage": "Late",
+        "stage": "Mature",
         "duration_weeks": 12,
         "extremity_pct": 45,
         "relative_pe": 1.8,
