@@ -227,6 +227,7 @@ pre-commit install && pre-commit install --hook-type pre-push
 | **Edge Pipeline Orchestrator** | ❌ Not required | ❌ Not used | ❌ Not used | Orchestrates local edge skills via subprocess |
 | **Trader Memory Core** | 🟡 Optional | ❌ Not used | ❌ Not used | FMP only for MAE/MFE in postmortem |
 | Dual-Axis Skill Reviewer | ❌ Not required | ❌ Not used | ❌ Not used | Deterministic scoring + optional LLM review |
+| **Morning Advisor** | ✅ Required | ❌ Not used | ✅ Required | Daily orchestrator; auto-executes long calls/puts/stocks on Alpaca paper |
 
 #### API Key Setup
 
@@ -530,6 +531,26 @@ python3 skills/trader-memory-core/scripts/thesis_review.py \
   --state-dir state/theses/ summary
 ```
 
+**Morning Advisor:** ⚠️ Requires FMP API key + Alpaca paper keys; cron-driven daily pipeline
+```bash
+# Smoke-test the market-open gate
+python3 skills/morning-advisor/scripts/check_market_open.py
+
+# Manual dry-run of the orchestrator (no orders)
+bash scripts/morning_advisor_run.sh --dry-run
+
+# Inspect rolling performance vs SPY
+python3 scripts/benchmark_tracker.py summary --window 30d
+
+# Manually log a recommendation (normally done by the skill)
+python3 scripts/benchmark_tracker.py record-rec \
+  --thesis-id th_x --ticker NVDA --instrument call \
+  --entry-price 4.85 --entry-date 2026-04-27 \
+  --source-skill vcp-screener
+```
+
+See `docs/setup-raspberry-pi.md` for cron + secrets setup on an always-on Pi.
+
 ### Skill Self-Improvement Loop
 
 An automated pipeline reviews and improves skill quality on a daily cadence.
@@ -776,6 +797,18 @@ Skills are designed to be combined for comprehensive analysis:
 6. Portfolio Manager → Execute entry, update thesis with actual price/date
 7. Trader Memory Core (review) → `list_review_due()` for periodic checks
 8. Trader Memory Core (close + postmortem) → Record exit, generate journal entry with MAE/MFE
+
+**Daily Auto-Trading Pipeline (Morning Advisor):**
+1. Cron triggers `scripts/morning_advisor_run.sh` at 08:00 ET (Mon-Fri)
+2. `morning-advisor` checks regime (`macro-regime-detector`, `market-breadth-analyzer`, `ftd-detector`, `market-top-detector`)
+3. Reviews open theses (Alpaca MCP positions + `trader-memory-core`) → HOLD / EXIT / ROLL decisions; closing orders submitted on Alpaca paper
+4. Regime-conditional screener (vcp/pead/dividend-growth/earnings) generates 0–3 candidates
+5. `trade-hypothesis-ideator` + calendar checks (`economic-calendar-fetcher`, `earnings-calendar`) drop event-risk candidates
+6. `options-strategy-advisor` selects long call / long put / stock per `references/option_selection.md`; `position-sizer` sizes to ≤ 1% risk
+7. Auto-execute on Alpaca paper (limit at mid for options; market for stock); transition theses ENTRY_READY → ACTIVE
+8. `scripts/benchmark_tracker.py` records each rec/outcome with SPY-relative alpha; daily report written to `reports/morning_advisor/<date>/`
+9. After 1 month, review `state/benchmark_log.jsonl` summary for go/no-go on continuing
+- **Hard constraints:** long-only options (calls/puts only, no spreads), 1w–1mo horizon, max 3 entries/day, paper trading only (`ALPACA_PAPER=true` enforced)
 
 ## Important Conventions
 

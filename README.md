@@ -218,6 +218,13 @@ Curated Claude skills for equity investors and traders. Each skill bundles promp
   - Supports lifecycle management (IDEA → ENTRY_READY → ACTIVE → CLOSED), position attachment, review scheduling, and MAE/MFE analysis.
   - Integrates with kanchi-dividend-sop, earnings-trade-analyzer, vcp-screener, pead-screener, canslim-screener, and edge-candidate-agent.
 
+- **Morning Advisor** (`morning-advisor`)
+  - End-to-end daily orchestrator: regime gate → position management → screener → option/stock selection → auto-execute on Alpaca paper.
+  - Designed for cron at 08:00 ET on a Raspberry Pi (or any always-on Linux box). Long calls/puts and stocks/ETFs only; 1 week to 1 month holding horizon.
+  - Hard-capped at 3 new entries per day, ≤ 1% risk per trade, ≤ 5% total open risk; paper trading only (`ALPACA_PAPER=true` enforced).
+  - Logs every recommendation and outcome to `state/benchmark_log.jsonl` with rolling alpha vs S&P 500 and per-source-skill performance breakdown.
+  - Setup guide: [`docs/setup-raspberry-pi.md`](docs/setup-raspberry-pi.md). Requires FMP API key + Alpaca paper keys.
+
 - **Exposure Coach** (`exposure-coach`)
   - Synthesizes outputs from market-breadth-analyzer, uptrend-analyzer, macro-regime-detector, market-top-detector, ftd-detector, theme-detector, sector-analyst, and institutional-flow-tracker into a unified exposure decision.
   - Answers the core question: "How much capital should I commit to equities right now?" before any individual stock analysis.
@@ -593,6 +600,7 @@ Several skills require API keys for data access:
 | **Exposure Coach** | 🟡 Optional | ❌ Not used | ❌ Not used | FMP only when institutional-flow-tracker data is included |
 | **Signal Postmortem** | 🟡 Optional | ❌ Not used | ❌ Not used | FMP for fetching realized returns; manual price entry also supported |
 | Dual-Axis Skill Reviewer | ❌ Not used | ❌ Not used | ❌ Not used | Deterministic scoring + optional LLM review |
+| **Morning Advisor** | ✅ Required | ❌ Not used | ✅ Required | Daily orchestrator; auto-executes long calls/puts/stocks on Alpaca paper |
 
 ### API Setup
 
