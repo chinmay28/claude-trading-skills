@@ -91,6 +91,7 @@ A comprehensive catalog of all 50 Claude Trading Skills organized by category. B
 | Skill | Description | API Requirements |
 |-------|-------------|-----------------|
 | **Portfolio Manager** | Portfolio analysis with Alpaca MCP Server integration. Asset allocation, sector diversification, risk metrics, HOLD/ADD/TRIM/SELL recommendations, rebalancing plans | <span class="badge badge-api">Alpaca Required</span> |
+| **[Morning Advisor]({{ '/en/skills/morning-advisor/' | relative_url }})** | Daily cron-driven orchestrator (regime → position management → screener → option/stock selection → auto-execute on Alpaca paper). Long calls/puts/stocks only, 1w-1mo horizon, ≤1% risk per trade. Logs SPY-relative alpha to `state/benchmark_log.jsonl` | <span class="badge badge-api">FMP + Alpaca Required</span> |
 | **[Trader Memory Core]({{ '/en/skills/trader-memory-core/' | relative_url }})** | Persistent thesis lifecycle tracker: register screener outputs as IDEA, manage state transitions through ENTRY_READY → ACTIVE → CLOSED, attach position sizing, schedule reviews, and generate postmortem reports with MAE/MFE | <span class="badge badge-optional">FMP Optional</span> |
 | **[Position Sizer]({{ '/en/skills/position-sizer/' | relative_url }})** | Risk-based position sizing using Fixed Fractional, ATR-based, and Kelly Criterion methods. Portfolio constraints (max position %, max sector %). Works offline | <span class="badge badge-free">No API</span> |
 | **[Breakout Trade Planner]({{ '/en/skills/breakout-trade-planner/' | relative_url }})** | Generates Minervini-style breakout trade plans from VCP screener output. Worst-case entry Gate, stop-limit bracket templates (pre_place / post_confirm), portfolio heat management | <span class="badge badge-free">No API</span> |
@@ -172,6 +173,10 @@ A comprehensive catalog of all 50 Claude Trading Skills organized by category. B
 - **[Position Sizer]({{ '/en/skills/position-sizer/' | relative_url }})** -- Risk-based position sizing with portfolio constraints
 - **[Trader Memory Core]({{ '/en/skills/trader-memory-core/' | relative_url }})** -- Track theses from idea to postmortem with persistent state
 
+### I want a daily auto-trading bot
+
+- **[Morning Advisor]({{ '/en/skills/morning-advisor/' | relative_url }})** -- Cron-driven daily orchestrator that picks 0-3 trades (long calls/puts/stocks), auto-executes on Alpaca paper, and tracks SPY-relative alpha
+
 ### I want to find trending themes
 
 - **[Theme Detector]({{ '/en/skills/theme-detector/' | relative_url }})** -- Cross-sector theme detection with lifecycle assessment
@@ -221,6 +226,7 @@ A comprehensive catalog of all 50 Claude Trading Skills organized by category. B
 | Stanley Druckenmiller Investment | -- | -- | -- |
 | Strategy Pivot Designer | -- | -- | -- |
 | Portfolio Manager | -- | -- | Required |
+| Morning Advisor | Required | -- | Required |
 | Trader Memory Core | Optional | -- | -- |
 | Position Sizer | -- | -- | -- |
 | US Stock Analysis | -- | -- | -- |

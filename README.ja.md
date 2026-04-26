@@ -196,6 +196,13 @@ English README is available at [`README.md`](README.md).
   - ライフサイクル管理（IDEA → ENTRY_READY → ACTIVE → CLOSED）、ポジション付与、レビュースケジュール、MAE/MFE分析をサポート。
   - kanchi-dividend-sop、earnings-trade-analyzer、vcp-screener、pead-screener、canslim-screener、edge-candidate-agent と統合。
 
+- **Morning Advisor** (`morning-advisor`)
+  - 毎日のエンドツーエンドオーケストレーター: レジーム判定 → ポジション管理 → スクリーナー → オプション/株式選択 → Alpaca paper での自動執行。
+  - 常時稼働の Raspberry Pi（または任意の Linux 機）で 08:00 ET の cron 実行を想定。ロングコール/プット、株式/ETF のみ。保有期間 1週間〜1ヶ月。
+  - 1日あたり最大3エントリー、1取引リスク ≤ 1%、合計建玉リスク ≤ 5% にハードキャップ。ペーパートレード専用（`ALPACA_PAPER=true` 強制）。
+  - 全推奨と結果を `state/benchmark_log.jsonl` に記録し、S&P 500 比のローリングアルファとスキル別パフォーマンスを集計。
+  - セットアップガイド: [`docs/setup-raspberry-pi.md`](docs/setup-raspberry-pi.md)。FMP API キー + Alpaca paper キーが必要。
+
 - **エクスポージャーコーチ** (`exposure-coach`)
   - market-breadth-analyzer、uptrend-analyzer、macro-regime-detector、market-top-detector、ftd-detector、theme-detector、sector-analyst、institutional-flow-tracker の出力を統合し、エクスポージャー決定を一元化。
   - 「今、株式にどれだけ資本を投入すべきか？」という核心的な問いに回答。
@@ -513,6 +520,7 @@ launchctl start com.trade-analysis.skill-generation-daily
 - **Trader Memory Core** (`trader-memory-core`): 🟡 オプション — FMPはポストモーテムのMAE/MFEのみ使用。コア機能はオフラインで動作
 - **エクスポージャーコーチ** (`exposure-coach`): 🟡 オプション — FMPはinstitutional-flow-trackerデータ利用時のみ必要
 - **シグナルポストモーテム** (`signal-postmortem`): 🟡 オプション — FMPは実現リターン取得用。手動価格入力にも対応
+- **Morning Advisor** (`morning-advisor`): ✅ FMP API キー + Alpaca paper キー必須。毎日 cron 実行、Alpaca paper への自動執行（ロングコール/プット/株式/ETF）
 
 ## 参考リンク
 - Claude Skillsローンチ概要: https://www.anthropic.com/news/skills
